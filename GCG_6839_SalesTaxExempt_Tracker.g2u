@@ -1,0 +1,914 @@
+﻿Program.Sub.ScreenSU.Start
+Gui.f_Main..Create(BaseForm)
+Gui.f_Main..Caption("Sales Tax Exemption Tracker (6839)")
+Gui.f_Main..Size(1224,732)
+Gui.f_Main..MinX(0)
+Gui.f_Main..MinY(0)
+Gui.f_Main..Position(0,0)
+Gui.f_Main..AlwaysOnTop(False)
+Gui.f_Main..FontName("Tahoma")
+Gui.f_Main..FontSize(8.25)
+Gui.f_Main..ControlBox(True)
+Gui.f_Main..MaxButton(True)
+Gui.f_Main..MinButton(True)
+Gui.f_Main..MousePointer(0)
+Gui.f_Main..Moveable(True)
+Gui.f_Main..Sizeable(True)
+Gui.f_Main..ShowInTaskBar(True)
+Gui.f_Main..TitleBar(True)
+Gui.f_Main..Event(UnLoad,f_Main_UnLoad)
+Gui.f_Main.cmdPrint.Create(Button)
+Gui.f_Main.cmdPrint.Enabled(True)
+Gui.f_Main.cmdPrint.Visible(True)
+Gui.f_Main.cmdPrint.Zorder(0)
+Gui.f_Main.cmdPrint.Size(75,23)
+Gui.f_Main.cmdPrint.Position(1140,28)
+Gui.f_Main.cmdPrint.Caption("Print")
+Gui.f_Main.cmdPrint.FontName("Tahoma")
+Gui.f_Main.cmdPrint.FontSize(8.25)
+Gui.f_Main.cmdPrint.Event(Click,cmdPrint_Click)
+Gui.f_Main.cmdPrint.Anchor(9)
+Gui.f_Main.cmdPrint.TabStop(True)
+Gui.f_Main.cmdPrint.TabIndex(6)
+Gui.f_Main.cmdEmail.Create(Button)
+Gui.f_Main.cmdEmail.Enabled(True)
+Gui.f_Main.cmdEmail.Visible(True)
+Gui.f_Main.cmdEmail.Zorder(0)
+Gui.f_Main.cmdEmail.Size(75,23)
+Gui.f_Main.cmdEmail.Position(1056,28)
+Gui.f_Main.cmdEmail.Caption("Email")
+Gui.f_Main.cmdEmail.FontName("Tahoma")
+Gui.f_Main.cmdEmail.FontSize(8.25)
+Gui.f_Main.cmdEmail.Event(Click,cmdEmail_Click)
+Gui.f_Main.cmdEmail.Anchor(9)
+Gui.f_Main.cmdEmail.TabStop(True)
+Gui.f_Main.cmdEmail.TabIndex(5)
+Gui.f_Main.GsGcData.Create(GsGridControl)
+Gui.f_Main.GsGcData.Enabled(True)
+Gui.f_Main.GsGcData.Visible(True)
+Gui.f_Main.GsGcData.Zorder(0)
+Gui.f_Main.GsGcData.Size(1224,626)
+Gui.f_Main.GsGcData.Position(0,76)
+Gui.f_Main.GsGcData.Dock(2)
+Gui.f_Main.GsGcData.Anchor(13)
+Gui.f_Main.GsGcData.Event(RowCellClick,GsGcData_RowCellClick)
+Gui.f_Main.GsGcData.Event(CellValueChanged,GsGcData_CellValueChanged)
+Gui.f_Main.chkSelect.Create(CheckBox)
+Gui.f_Main.chkSelect.Enabled(True)
+Gui.f_Main.chkSelect.Visible(True)
+Gui.f_Main.chkSelect.Zorder(0)
+Gui.f_Main.chkSelect.Size(158,20)
+Gui.f_Main.chkSelect.Position(1056,5)
+Gui.f_Main.chkSelect.Caption("Select All Overdue Records")
+Gui.f_Main.chkSelect.FontName("Tahoma")
+Gui.f_Main.chkSelect.FontSize(8.25)
+Gui.f_Main.chkSelect.Anchor(9)
+Gui.f_Main.chkSelect.TabStop(True)
+Gui.f_Main.chkSelect.TabIndex(4)
+Gui.f_Main.chkSelect.Event(Change,chkSelect_Change)
+Gui.f_Main.frameEmails.Create(Frame)
+Gui.f_Main.frameEmails.Enabled(True)
+Gui.f_Main.frameEmails.Visible(True)
+Gui.f_Main.frameEmails.Zorder(0)
+Gui.f_Main.frameEmails.Size(308,65)
+Gui.f_Main.frameEmails.Position(6,4)
+Gui.f_Main.frameEmails.Caption("Email Attempt Intervals Prior to Expiration Date")
+Gui.f_Main.frameEmails.FontName("Tahoma")
+Gui.f_Main.frameEmails.FontSize(8.25)
+Gui.f_Main.frameEmails.BorderStyle(3)
+Gui.f_Main.lblDay3.Create(Label,"Days",True,24,13,0,270,43,True,0,"Tahoma",8.25,,0,0)
+Gui.f_Main.lblDay3.BorderStyle(0)
+Gui.f_Main.lblDay3.Parent("frameEmails")
+Gui.f_Main.txtInterval3.Create(TextBox,"",True,48,20,0,215,39,True,0,"Tahoma",8.25,,1)
+Gui.f_Main.txtInterval3.NumericOnly(2)
+Gui.f_Main.txtInterval3.TabStop(True)
+Gui.f_Main.txtInterval3.TabIndex(3)
+Gui.f_Main.txtInterval3.Parent("frameEmails")
+Gui.f_Main.lblDay2.Create(Label,"Days",True,24,13,0,168,43,True,0,"Tahoma",8.25,,0,0)
+Gui.f_Main.lblDay2.BorderStyle(0)
+Gui.f_Main.lblDay2.Parent("frameEmails")
+Gui.f_Main.txtInterval2.Create(TextBox,"",True,48,20,0,113,39,True,0,"Tahoma",8.25,,1)
+Gui.f_Main.txtInterval2.NumericOnly(2)
+Gui.f_Main.txtInterval2.TabStop(True)
+Gui.f_Main.txtInterval2.TabIndex(2)
+Gui.f_Main.txtInterval2.Parent("frameEmails")
+Gui.f_Main.lblDay1.Create(Label,"Days",True,24,13,0,66,43,True,0,"Tahoma",8.25,,0,0)
+Gui.f_Main.lblDay1.BorderStyle(0)
+Gui.f_Main.lblDay1.Parent("frameEmails")
+Gui.f_Main.txtInterval1.Create(TextBox,"",True,48,20,0,11,39,True,0,"Tahoma",8.25,,1)
+Gui.f_Main.txtInterval1.NumericOnly(2)
+Gui.f_Main.txtInterval1.TabStop(True)
+Gui.f_Main.txtInterval1.TabIndex(1)
+Gui.f_Main.txtInterval1.Parent("frameEmails")
+Gui.f_Main.lblInterval3.Create(Label,"Email Attempt 3:",True,79,13,0,215,21,True,0,"Tahoma",8.25,,0,0)
+Gui.f_Main.lblInterval3.BorderStyle(0)
+Gui.f_Main.lblInterval3.Parent("frameEmails")
+Gui.f_Main.lblInterval2.Create(Label,"Email Attempt 2:",True,79,13,0,113,21,True,0,"Tahoma",8.25,,0,0)
+Gui.f_Main.lblInterval2.BorderStyle(0)
+Gui.f_Main.lblInterval2.Parent("frameEmails")
+Gui.f_Main.lblInterval1.Create(Label,"Email Attempt 1:",True,79,13,0,11,21,True,0,"Tahoma",8.25,,0,0)
+Gui.f_Main.lblInterval1.BorderStyle(0)
+Gui.f_Main.lblInterval1.Parent("frameEmails")
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+V.Global.bError.Declare(Boolean)
+V.Global.bUnattended.Declare(Boolean)
+V.Global.bLoadData.Declare(Boolean, False)
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+F.Intrinsic.Control.Try
+Function.Intrinsic.UI.UsePixels ' Allows you to use Pixels instead of Twips throughout
+
+'open the connection
+F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN, V.Ambient.PUser, V.Ambient.PPass)
+
+'callsub to load the grid 
+F.Intrinsic.Control.CallSub(LoadGrid)
+
+'callsub to format the gird
+F.Intrinsic.Control.CallSub(FormatGrid)
+
+'callsub to deserialize columns
+F.Intrinsic.Control.CallSub(Deserialize)
+
+Gui.f_Main..ApplyTheme()
+'show the form
+Gui.f_Main..Show
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(ErrorMessage, "ErrorNumber", V.Ambient.ErrorNumber, "ErrorDescription", V.Ambient.ErrorDescription, "Subroutine", V.Ambient.CurrentSubroutine, "UNATTENDED", V.Global.bUnattended, "Project", "6839", "ProjectTitle", "Sales Tax Exempt Tracker", "Callback", "F_Main_UnLoad")
+F.Intrinsic.Control.EndTry
+Program.Sub.Main.End
+
+Program.Sub.LoadGrid.Start
+F.Intrinsic.Control.Try
+V.Local.sSQL.Declare(String)
+
+'check to see if the datatable exists
+'if it does, close it
+F.Intrinsic.Control.If(V.DataTable.dtSalesTax.Exists,=,True)
+	F.Data.DataTable.Close("dtSalesTax")
+F.Intrinsic.Control.EndIf
+
+'create the datatable
+F.Data.DataTable.Create("dtSalesTax" ,True)
+'add columns to datatable
+F.Data.DataTable.AddColumn("dtSalesTax", "SEL", "BOOLEAN")
+F.Data.DataTable.AddColumn("dtSalesTax", "NAME_CUSTOMER", "STRING")
+F.Data.DataTable.AddColumn("dtSalesTax", "CUSTOMER", "STRING")
+F.Data.DataTable.AddColumn("dtSalesTax", "TAX_EXMP_NO", "STRING")
+F.Data.DataTable.AddColumn("dtSalesTax", "TAX_STATE", "STRING")
+F.Data.DataTable.AddColumn("dtSalesTax", "EXP_DATE", "DATE")
+F.Data.DataTable.AddColumn("dtSalesTax", "DATE_LST_SENT", "DATE")
+F.Data.DataTable.AddColumn("dtSalesTax", "DATE_LST_REC", "DATE")
+F.Data.DataTable.AddColumn("dtSalesTax", "SEND_EMAIL", "STRING")
+F.Data.DataTable.AddColumn("dtSalesTax", "EMAIL_ADDRESS", "STRING")
+F.Data.DataTable.AddColumn("dtSalesTax", "PRINT_FLAG", "BOOLEAN")
+
+'build the query to grab the data needed to populate the datatable
+F.Intrinsic.Control.If(V.DataTable.dtTemp.Exists,=,True)
+	F.Data.DataTable.Close("dtTemp")
+F.Intrinsic.Control.EndIf
+
+'build temp datatable for the information
+F.Data.DataTable.CreateFromSQL("dtTemp", "con", "SELECT A.NAME_CUSTOMER, A.CUSTOMER, B.TAX_SALES_EX_NO AS TAX_EXMP_NO, B.TAX_STATE FROM V_CUSTOMER_MASTER A LEFT JOIN V_CUSTOMER_TAX B ON A.CUSTOMER = B.CUST ORDER BY A.CUSTOMER", True) 
+'merge the temp data into the sales tax data table
+F.Data.DataTable.Merge("dtTemp", "dtSalesTax", True, 4)
+'close the temp table
+F.Data.DataTable.Close("dtTemp")
+
+'fill the date information from dictionary
+F.Data.Dictionary.CreateFromSQL("dicDate", "con", "SELECT CUSTOMER, EXP_DATE FROM GCG_6839_SALES_TAX")
+F.Data.Dictionary.SetDefaultReturn("dicDate", "1900-01-01")
+F.Data.DataTable.FillFromDictionary("dtSalesTax", "dicDate", "CUSTOMER", "EXP_DATE")
+F.Data.Dictionary.Close("dicDate")
+
+F.Data.Dictionary.CreateFromSQL("dicDate", "con", "SELECT CUSTOMER, DATE_LST_SENT FROM GCG_6839_SALES_TAX")
+F.Data.Dictionary.SetDefaultReturn("dicDate", "1900-01-01")
+F.Data.DataTable.FillFromDictionary("dtSalesTax", "dicDate", "CUSTOMER", "DATE_LST_SENT")
+F.Data.Dictionary.Close("dicDate")
+
+F.Data.Dictionary.CreateFromSQL("dicDate", "con", "SELECT CUSTOMER, DATE_LST_REC FROM GCG_6839_SALES_TAX")
+F.Data.Dictionary.SetDefaultReturn("dicDate", "1900-01-01")
+F.Data.DataTable.FillFromDictionary("dtSalesTax", "dicDate", "CUSTOMER", "DATE_LST_REC")
+F.Data.Dictionary.Close("dicDate")
+
+'Fill the email address information from the dictionary
+F.Data.Dictionary.CreateFromSQL("dicEmail", "con", "SELECT CUSTOMER, EMAIL_ADDRESS FROM GCG_6839_SALES_TAX")
+F.Data.Dictionary.SetDefaultReturn("dicEmail", " ")
+F.Data.DataTable.FillFromDictionary("dtSalesTax", "dicEmail", "CUSTOMER", "EMAIL_ADDRESS")
+F.Data.Dictionary.Close("dicEmail")
+
+'fill the print flag information from dictionary
+F.Data.Dictionary.CreateFromSQL("dicPrint", "con", "SELECT CUSTOMER, PRINT_FLAG FROM GCG_6839_SALES_TAX")
+F.Data.Dictionary.SetDefaultReturn("dicPrint", 0)
+F.Data.DataTable.FillFromDictionary("dtSalesTax", "dicPrint", "CUSTOMER", "PRINT_FLAG")
+F.Data.Dictionary.Close("dicPrint")
+
+F.Data.DataTable.SetValue("dtSalesTax", -1, "SEL", 0)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(ErrorMessage, "ErrorNumber", V.Ambient.ErrorNumber, "ErrorDescription", V.Ambient.ErrorDescription, "Subroutine", V.Ambient.CurrentSubroutine, "UNATTENDED", V.Global.bUnattended, "Project", "6839", "ProjectTitle", "Sales Tax Exempt Tracker", "Callback", "F_Main_UnLoad")
+F.Intrinsic.Control.EndTry
+Program.Sub.LoadGrid.End
+
+Program.Sub.FormatGrid.Start
+ F.Intrinsic.Control.Try
+V.Local.sDefault.Declare(String)
+V.Local.sGV.Declare(String)
+V.Local.sProperty.Declare(String)
+
+'create the gridview for the parent datatable
+Gui.f_Main.GsGcData.AddGridviewFromDatatable("gvSalesTax", "dtSalesTax")
+V.Local.sGV.Set("gvSalesTax")
+'set grid view properties
+Gui.f_Main.GsGcData.SetGridviewProperty(V.Local.sGV, "AllowSort", True)
+Gui.f_Main.GsGcData.SetGridviewProperty(V.Local.sGV, "AllowFilter", False)
+Gui.f_Main.GsGcData.SetGridviewProperty(V.Local.sGV, "OptionsViewShowGroupPanel", False)
+Gui.f_Main.GsGcData.SetGridviewProperty(V.Local.sGV, "OptionsViewColumnAutoWidth", True)
+Gui.f_Main.GsGcData.SetGridviewProperty(V.Local.sGV, "MultiSelect", False)
+
+v.Local.sProperty.Set("Visible")
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "CUSTOMER", V.Local.sProperty, True)
+
+'set properites for the columns
+V.Local.sProperty.Set("Caption")
+V.Local.sDefault.Set(" ")
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "SEL", V.Local.sProperty, " ")
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "NAME_CUSTOMER", V.Local.sProperty, "Customer Name")
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "CUSTOMER", V.Local.sProperty, "Customer")
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "TAX_EXMP_NO", V.Local.sProperty, "Tax Exempt Number")
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "TAX_STATE", V.Local.sProperty, "Tax State")
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "EXP_DATE", V.Local.sProperty, "Exp. Date")
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "DATE_LST_SENT", V.Local.sProperty, "Date Last Sent")
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "DATE_LST_REC", V.Local.sProperty, "Date Last Received")
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "SEND_EMAIL", V.Local.sProperty, " ")
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "EMAIL_ADDRESS", V.Local.sProperty, "Email Addresses")
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "PRINT_FLAG", V.Local.sProperty, "Print")
+
+V.Local.sProperty.Set("HeaderHAlignment")
+V.Local.sDefault.Set("Left")
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "SEL", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "NAME_CUSTOMER", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "CUSTOMER", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "TAX_EXMP_NO", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "TAX_STATE", V.Local.sProperty,  V.Local.sDefault)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "EXP_DATE", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "DATE_LST_SENT", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "DATE_LST_REC", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "SEND_EMAIL", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "EMAIL_ADDRESS", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "PRINT_FLAG", V.Local.sProperty, V.Local.sDefault)
+
+V.Local.sProperty.Set("HeaderFontBold")
+V.Local.sDefault.Set("True")
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "SEL", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "NAME_CUSTOMER", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "CUSTOMER", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "TAX_EXMP_NO", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "TAX_STATE", V.Local.sProperty,  V.Local.sDefault)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "EXP_DATE", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "DATE_LST_SENT", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "DATE_LST_REC", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "SEND_EMAIL", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "EMAIL_ADDRESS", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "PRINT_FLAG", V.Local.sProperty, V.Local.sDefault)
+
+V.Local.sProperty.Set("AllowEdit")
+V.Local.sDefault.Set("False")
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "SEL", V.Local.sProperty, True)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "NAME_CUSTOMER", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "CUSTOMER", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "TAX_EXMP_NO", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "TAX_STATE", V.Local.sProperty,  V.Local.sDefault)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "EXP_DATE", V.Local.sProperty, True)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "DATE_LST_SENT", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "DATE_LST_REC", V.Local.sProperty, True)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "SEND_EMAIL", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "EMAIL_ADDRESS", V.Local.sProperty, True)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "PRINT_FLAG", V.Local.sProperty, True)
+
+V.Local.sProperty.Set("ReadOnly")
+V.Local.sDefault.Set("True")
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "SEL", V.Local.sProperty, False)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "NAME_CUSTOMER", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "CUSTOMER", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "TAX_EXMP_NO", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "TAX_STATE", V.Local.sProperty,  V.Local.sDefault)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "EXP_DATE", V.Local.sProperty, False)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "DATE_LST_SENT", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "DATE_LST_REC", V.Local.sProperty, False)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "SEND_EMAIL", V.Local.sProperty, v.Local.sDefault)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "EMAIL_ADDRESS", V.Local.sProperty, False)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "PRINT_FLAG", V.Local.sProperty, False)
+
+V.Local.sProperty.Set("MinWidth")
+V.Local.sDefault.Set("150")
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "SEL", V.Local.sProperty, 25)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "NAME_CUSTOMER", V.Local.sProperty, 200)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "CUSTOMER", V.Local.sProperty, 75)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "TAX_EXMP_NO", V.Local.sProperty, 125)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "TAX_STATE", V.Local.sProperty,  50)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "EXP_DATE", V.Local.sProperty, 80)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "DATE_LST_SENT", V.Local.sProperty, 95)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "DATE_LST_REC", V.Local.sProperty, 125)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "SEND_EMAIL", V.Local.sProperty, 75)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "EMAIL_ADDRESS", V.Local.sProperty, 200)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "PRINT_FLAG", V.Local.sProperty, 50)
+
+V.Local.sProperty.Set("MaxWidth")
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "SEL", V.Local.sProperty, 25)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "PRINT_FLAG", V.Local.sProperty, 50)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "SEND_EMAIL", V.Local.sProperty, 90)
+
+V.Local.sProperty.Set("DisplayCustomDatetime")
+V.Local.sDefault.Set("d")
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "EXP_DATE", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "DATE_LST_SENT", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "DATE_LST_REC", V.Local.sProperty, V.Local.sDefault)
+
+V.Local.sProperty.Set("CellWordWrap")
+V.Local.sDefault.Set("Wrap")
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "EMAIL_ADDRESS", V.Local.sProperty, V.Local.sDefault)
+
+V.Local.sProperty.Set("CellBackColor")
+V.Local.sDefault.Set("LightYellow")
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "EXP_DATE", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "DATE_LST_REC", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "EMAIL_ADDRESS", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGcData.SetColumnProperty(V.Local.sGV, "PRINT_FLAG", V.Local.sProperty, V.Local.sDefault)
+
+Gui.f_Main.GsGcData.ColumnEdit(V.Local.sGV, "SEND_EMAIL", "EditorButton", "Send Email")
+
+Gui.f_Main.GsGcData.MainView(V.Local.sGV)
+
+V.Global.bLoadData.Set(True)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(ErrorMessage, "ErrorNumber", V.Ambient.ErrorNumber, "ErrorDescription", V.Ambient.ErrorDescription, "Subroutine", V.Ambient.CurrentSubroutine, "UNATTENDED", V.Global.bUnattended, "Project", "6839", "ProjectTitle", "Sales Tax Exempt Tracker", "Callback", "F_Main_UnLoad")
+F.Intrinsic.Control.EndTry
+Program.Sub.FormatGrid.End
+
+Program.Sub.chkSelect_Change.Start
+F.Intrinsic.Control.Try
+V.Local.iCnt.Declare(Long)
+V.Local.iDiff.Declare(Long)
+V.Local.dExpDate.Declare(Date)
+V.Local.sExpDate.Declare(String)
+
+F.Intrinsic.Control.BlockEvents
+
+'check to see what the value was changed to
+F.Intrinsic.Control.If(V.Screen.f_Main!chkSelect.Value,=,1)
+	'if checked, select all rows in the datatable that are overdue
+	F.Intrinsic.Control.For(V.Local.iCnt, 0, V.DataTable.dtSalesTax.RowCount--,1)
+		'pull the expiration date
+		V.Local.dExpDate.Set(V.DataTable.dtSalesTax(V.Local.iCnt).EXP_DATE!FieldVal)
+		'get the difference between the dates to see which ones are overdue
+		F.Intrinsic.Date.DateDiff("H", V.Ambient.Date.PervasiveDate, V.Local.dExpDate, V.Local.iDiff)
+		F.Intrinsic.Control.If(V.Local.iDiff,<,0)
+			F.Data.DataTable.SetValue("dtSalesTax", V.Local.iCnt, "SEL", 1)
+		F.Intrinsic.Control.EndIf
+		
+	F.Intrinsic.Control.Next(V.Local.iCnt)
+	
+F.Intrinsic.Control.Else
+	'if unchecked, deselect all rows in the datatable
+	F.Data.DataTable.SetValue("dtSalesTax", -1, "SEL", 0)
+F.Intrinsic.Control.EndIf
+
+F.Data.DataTable.AcceptChanges("dtSalesTax")
+
+F.Intrinsic.Control.UnBlockEvents
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(ErrorMessage, "ErrorNumber", V.Ambient.ErrorNumber, "ErrorDescription", V.Ambient.ErrorDescription, "Subroutine", V.Ambient.CurrentSubroutine, "UNATTENDED", V.Global.bUnattended, "Project", "6839", "ProjectTitle", "Sales Tax Exempt Tracker", "Callback", "F_Main_UnLoad")
+F.Intrinsic.Control.EndTry
+Program.Sub.chkSelect_Change.End
+
+Program.Sub.GsGcData_RowCellClick.Start
+F.Intrinsic.Control.Try
+V.Local.bDirExists.Declare(Boolean)
+V.Local.dExpDate.Declare(Date)
+V.Local.iReportID.Declare(Long)
+V.Local.iUser.Declare(Long)
+V.Local.sSubject.Declare(String)
+V.Local.sSenderEmail.Declare(String)
+V.Local.sEmail.Declare(String)
+V.Local.sBody.Declare(String)
+V.Local.sAttachments.Declare(String)
+V.Local.sCustomer.Declare(String)
+V.Local.sFileName.Declare(String)
+V.Local.sExpDate.Declare(String)
+V.Local.sFilePath.Declare(String)
+V.Local.sParam.Declare(String)
+V.Local.sParam.Redim(0,1)
+V.Local.sParamVal.Declare(String)
+V.Local.sParamVal.Redim(0,1)
+V.Local.sAttachmentPath.Declare(String)
+
+F.Intrinsic.Control.BlockEvents
+'check to make sure it's the send email column
+F.Intrinsic.Control.If(V.Args.Column.Trim,=,"SEND_EMAIL")
+	'check to see that the custom file directory exists
+	F.Intrinsic.String.Build("{0}\CUSTOM\GCG_6839\", V.Caller.BusintDir, V.Local.sFilePath)
+	F.Intrinsic.File.DirExists(V.Local.sFilePath, V.Local.bDirExists)
+	F.Intrinsic.Control.If(V.Local.bDirExists,=,False)
+		F.Intrinsic.File.CreateDir(V.Local.sFilePath)
+	F.Intrinsic.Control.EndIf
+	'check to see that the email address column isn't blank
+	F.Intrinsic.Control.If(V.DataTable.dtSalesTax(V.Args.RowIndex).EMAIL_ADDRESS!FieldValTrim,<>,"")
+		'get the email addresses entered for the selected customer
+		V.Local.sEmail.Set(V.DataTable.dtSalesTax(V.Args.RowIndex).EMAIL_ADDRESS!FieldValTrim)
+		F.Intrinsic.String.Replace(V.Local.sEmail, ";", "@!@", V.Local.sEmail)
+		
+		'set the customer number
+		V.Local.sCustomer.Set(V.DataTable.dtSalesTax(V.Args.RowIndex).CUSTOMER!FieldValTrim)
+		F.Intrinsic.UI.InvokeWaitDialog("Compiling Email...", "Please Wait")
+		F.Intrinsic.Control.If(V.DataTable.dtSalesTax(V.Args.RowIndex).TAX_STATE!FieldValTrim,=,"CT")
+			'save the report for CT as PDF and rename it to be Customer_CT_SalesTax_Exemp.PDF
+			F.Global.BI.GetIDFromName("GCG_6839_CT_SALESTAX_EXEMP.rpt", V.Local.iReportID)
+			'build the file name
+			F.Intrinsic.String.Build("{0}\CUSTOM\GCG_6839\{1}_CT_SALESTAX_EXEMP.PDF", V.Caller.BusintDir, V.Local.sCustomer, V.Local.sFileName)
+			'Save the corresponding state tax exemption report to PDF
+			V.Local.sParam(0).Set("CUSTOMER")
+			V.Local.sParamVal(0).Set(V.Local.sCustomer.Trim)
+			F.Global.BI.SaveReport(V.Local.iReportID, 1, V.Local.sParam, V.Local.sParamVal, V.Local.sFileName)
+			
+			F.Intrinsic.String.Build("{0}_CT_SALESTAX_EXEMP.PDF*!*{1}", V.Local.sCustomer.Trim, V.Local.sFilePath.Trim, V.Local.sAttachmentPath)
+		F.Intrinsic.Control.ElseIf(V.DataTable.dtSalesTax(V.Args.RowIndex).TAX_STATE!FieldValTrim,=,"RI")
+			'save the report for CT as PDF and rename it to be Customer_RI_SalesTax_Exemp.PDF
+			F.Global.BI.GetIDFromName("GCG_6839_RI_SALESTAX_EXEMP.rpt", V.Local.iReportID)
+			'build the file name
+			F.Intrinsic.String.Build("{0}\CUSTOM\GCG_6839\{1}_RI_SALESTAX_EXEMP.PDF", V.Caller.BusintDir, V.Local.sCustomer, V.Local.sFileName)
+			'Save the corresponding state tax exemption report to PDF
+			V.Local.sParam(0).Set("CUSTOMER")
+			V.Local.sParamVal(0).Set(V.Local.sCustomer.Trim)
+			F.Global.BI.SaveReport(V.Local.iReportID, 1, V.Local.sParam, V.Local.sParamVal, V.Local.sFileName)
+			
+			F.Intrinsic.String.Build("{0}_RI_SALESTAX_EXEMP.PDF*!*{1}", V.Local.sCustomer.Trim, V.Local.sFilePath.Trim, V.Local.sAttachmentPath)
+		F.Intrinsic.Control.Else
+			'if it's not one of these states, exit the subroutine
+			F.Intrinsic.UI.CloseWaitDialog
+			F.Intrinsic.Control.UnBlockEvents
+			F.Intrinsic.Control.ExitSub
+		F.Intrinsic.Control.EndIf
+
+		'compile the email using the email addresses entered
+		'add send interval to queued message
+		'add crystal report attachment
+		
+		'set the subject
+		V.Local.sSubject.Set("Sales Tax Exemption Due To Expire Soon")
+		'get the sender email from the user that is sending the email from the dashboard
+		F.Global.Security.GetUserEmail(V.Caller.User, V.Caller.CompanyCode, V.Local.sSenderEmail)
+		
+		'Build the body of the email
+		V.Local.dExpDate.set(V.DataTable.dtSalesTax(V.Args.RowIndex).EXP_DATE!FieldVal)
+		F.Intrinsic.String.Format(V.Local.dExpDate, "YYYY-MM-DD", V.Local.sExpDate)
+		F.Intrinsic.String.Build("Your Sales Tax Exemption will expire on {0}. Please complete the attached form and email, or mail, it to us before the expiration date.", V.Local.sExpDate, V.Local.sBody)
+		F.Global.Security.GetUserId(V.Caller.User, V.Caller.CompanyCode, V.Local.iUser)
+		
+		
+		F.Global.Messaging.QueueMessage(V.Caller.CompanyCode, V.Local.iUser, V.Caller.Caller, V.Local.sSubject.Trim,V.Local.sSenderEmail, V.Local.sEmail.Trim, V.Local.sBody.Trim, 5, "credit@cbsteel.com", False, "", "", "", "", "", "", "",V.Local.sAttachmentPath,False)
+		'set the date last sent to today's date
+		F.Data.DataTable.SetValue("dtSalesTax", V.Args.RowIndex, "DATE_LST_SENT", V.Ambient.Date.PervasiveDate)
+		F.Intrinsic.UI.CloseWaitDialog
+		F.Intrinsic.UI.Msgbox("Email Successfully Sent!")
+	F.Intrinsic.Control.Else
+		F.Intrinsic.UI.Msgbox("You must enter at least one Email Address before you can send an Email for this Customer. Please try again.", "Missing Information")
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.UnBlockEvents
+
+F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(ErrorMessage, "ErrorNumber", V.Ambient.ErrorNumber, "ErrorDescription", V.Ambient.ErrorDescription, "Subroutine", V.Ambient.CurrentSubroutine, "UNATTENDED", V.Global.bUnattended, "Project", "6839", "ProjectTitle", "Sales Tax Exempt Tracker", "Callback", "F_Main_UnLoad")
+F.Intrinsic.Control.EndTry
+Program.Sub.GsGcData_RowCellClick.End
+
+Program.Sub.GsGcData_CellValueChanged.Start
+F.Intrinsic.Control.Try
+V.Local.bPrintFlag.Declare(Boolean)
+V.Local.dExpDate.Declare(Date)
+V.Local.dDateRec.Declare(Date)
+V.Local.dDateSent.Declare(Date)
+V.Local.sSQL.Declare(String)
+V.Local.sRet.Declare(String)
+V.Local.sCustomer.Declare(String)
+V.Local.sExpDate.Declare(String)
+V.Local.sDateRec.Declare(String)
+V.Local.sEmailAddress.Declare(String)
+V.Local.sNameCustomer.Declare(String)
+V.Local.sTaxExempNo.Declare(String)
+V.Local.sTaxState.Declare(String)
+V.Local.sDateSent.Declare(String)
+
+F.Intrinsic.Control.BlockEvents
+'check the column to see what we need to update
+F.Intrinsic.Control.If(V.Args.Column.Trim,=,"EXP_DATE")
+	'get the customer number
+	V.Local.sCustomer.Set(V.DataTable.dtSalesTax(V.Args.RowIndex).CUSTOMER!FieldValTrim)
+	'get the expiration date
+	V.Local.dExpDate.Set(V.DataTable.dtSalesTax(V.Args.RowIndex).EXP_DATE!FieldVal)
+	'format the expiration date
+	F.Intrinsic.String.Format(V.Local.dExpDate, "YYYY-MM-DD", V.Local.sExpDate)
+	
+	'query the custom table to see if a record exists
+	F.Intrinsic.String.Build("SELECT * FROM GCG_6839_SALES_TAX WHERE CUSTOMER = '{0}'", V.Local.sCustomer.Trim, V.Local.sSQL)
+	F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSQL, V.Local.sRet)
+	'check to see if anything was returned. If it was, update. If it wasn't insert it
+	F.Intrinsic.Control.If(V.Local.sRet.Trim,<>,"")
+		F.Intrinsic.String.Build("UPDATE GCG_6839_SALES_TAX SET EXP_DATE = '{0}' WHERE CUSTOMER = '{1}'", V.Local.sExpDate.PervasiveDate, V.Local.sCustomer.Trim, V.Local.sSQL)
+		F.ODBC.Connection!con.Execute(V.Local.sSQL)
+	F.Intrinsic.Control.Else
+		v.Local.sNameCustomer.Set(V.DataTable.dtSalesTax(V.Args.RowIndex).NAME_CUSTOMER!FieldValTrim)
+		V.Local.sTaxExempNo.Set(V.DataTable.dtSalesTax(V.Args.RowIndex).TAX_EXMP_NO!FieldValTrim)
+		V.Local.sTaxState.Set(V.DataTable.dtSalesTax(V.Args.RowIndex).TAX_STATE!FieldValTrim)
+		V.Local.dDateSent.Set(V.DataTable.dtSalesTax(V.Args.RowIndex).DATE_LST_SENT!FieldVal)
+		F.Intrinsic.String.Format(V.Local.dDateSent, "YYYY-MM-DD", V.Local.sDateSent)
+		V.Local.dDateRec.Set(V.DataTable.dtSalesTax(V.Args.RowIndex).DATE_LST_REC!FieldVal)
+		F.Intrinsic.String.Format(V.Local.dDateRec, "YYYY-MM-DD", V.Local.sDateRec)
+		V.Local.sEmailAddress.Set(V.DataTable.dtSalesTax(V.Args.RowIndex).EMAIL_ADDRESS!FieldValTrim)
+		V.Local.bPrintFlag.Set(V.DataTable.dtSalesTax(V.Args.RowIndex).PRINT_FLAG!FieldVal)
+		F.Intrinsic.String.Build("INSERT INTO GCG_6839_SALES_TAX (CUSTOMER, NAME_CUSTOMER, TAX_EXMP_NO, TAX_STATE, EXP_DATE, DATE_LST_SENT, DATE_LST_REC, EMAIL_ADDRESS, PRINT_FLAG) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}')", V.Local.sCustomer.Trim, V.Local.sNameCustomer.Trim, V.Local.sTaxExempNo.Trim, V.Local.sTaxState.Trim, V.Local.sExpDate.PervasiveDate, V.Local.sDateSent.PervasiveDate, V.Local.sDateRec.PervasiveDate, V.Local.sEmailAddress.Trim, V.Local.bPrintFlag, V.Local.sSQL)
+		F.ODBC.Connection!con.Execute(V.Local.sSQL)
+	F.Intrinsic.Control.EndIf
+	
+F.Intrinsic.Control.ElseIf(V.Args.Column.Trim,=,"DATE_LST_REC")
+	'get the customer number
+	V.Local.sCustomer.Set(V.DataTable.dtSalesTax(V.Args.RowIndex).CUSTOMER!FieldValTrim)
+	'get the date last received date
+	V.Local.dDateRec.Set(V.DataTable.dtSalesTax(V.Args.RowIndex).DATE_LST_REC!FieldVal)
+	'format the expiration date
+	F.Intrinsic.String.Format(V.Local.dDateRec, "YYYY-MM-DD", V.Local.sDateRec)
+	'query the custom table to see if a record exists
+	F.Intrinsic.String.Build("SELECT * FROM GCG_6839_SALES_TAX WHERE CUSTOMER = '{0}'", V.Local.sCustomer.Trim, V.Local.sSQL)
+	F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSQL, V.Local.sRet)
+	'check to see if anything was returned. If it was, update. If it wasn't insert it
+	F.Intrinsic.Control.If(V.Local.sRet.Trim,<>,"")
+		F.Intrinsic.String.Build("UPDATE GCG_6839_SALES_TAX SET DATE_LST_REC = '{0}' WHERE CUSTOMER = '{1}'", V.Local.sDateRec.PervasiveDate, V.Local.sCustomer.Trim, V.Local.sSQL)
+		F.ODBC.Connection!con.Execute(V.Local.sSQL)
+	F.Intrinsic.Control.Else
+		v.Local.sNameCustomer.Set(V.DataTable.dtSalesTax(V.Args.RowIndex).NAME_CUSTOMER!FieldValTrim)
+		V.Local.sTaxExempNo.Set(V.DataTable.dtSalesTax(V.Args.RowIndex).TAX_EXMP_NO!FieldValTrim)
+		V.Local.sTaxState.Set(V.DataTable.dtSalesTax(V.Args.RowIndex).TAX_STATE!FieldValTrim)
+		'get the expiration date
+		V.Local.dExpDate.Set(V.DataTable.dtSalesTax(V.Args.RowIndex).EXP_DATE!FieldVal)
+		'format the expiration date
+		F.Intrinsic.String.Format(V.Local.dExpDate, "YYYY-MM-DD", V.Local.sExpDate)
+		V.Local.dDateSent.Set(V.DataTable.dtSalesTax(V.Args.RowIndex).DATE_LST_SENT!FieldVal)
+		F.Intrinsic.String.Format(V.Local.dDateSent, "YYYY-MM-DD", V.Local.sDateSent)
+		V.Local.sEmailAddress.Set(V.DataTable.dtSalesTax(V.Args.RowIndex).EMAIL_ADDRESS!FieldValTrim)
+		V.Local.bPrintFlag.Set(V.DataTable.dtSalesTax(V.Args.RowIndex).PRINT_FLAG!FieldVal)
+		F.Intrinsic.String.Build("INSERT INTO GCG_6839 (CUSTOMER, NAME_CUSTOMER, TAX_EXMP_NO, TAX_STATE, EXP_DATE, DATE_LST_SENT, DATE_LST_REC, EMAIL_ADDRESS, PRINT_FLAG) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}')", V.Local.sCustomer.Trim, V.Local.sNameCustomer.Trim, V.Local.sTaxExempNo.Trim, V.Local.sTaxState.Trim, V.Local.sExpDate.PervasiveDate, V.Local.sDateSent.PervasiveDate, V.Local.sDateRec.PervasiveDate, V.Local.sEmailAddress.Trim, V.Local.bPrintFlag, V.Local.sSQL)
+		F.ODBC.Connection!con.Execute(V.Local.sSQL)
+	F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ElseIf(V.Args.Column.Trim,=,"EMAIL_ADDRESS")
+	'get the customer number
+	V.Local.sCustomer.Set(V.DataTable.dtSalesTax(V.Args.RowIndex).CUSTOMER!FieldValTrim)
+	'get the email addresses entered
+	V.Local.sEmailAddress.Set(V.DataTable.dtSalesTax(V.Args.RowIndex).EMAIL_ADDRESS!FieldValTrim)
+	'query the custom table to see if a record exists
+	F.Intrinsic.String.Build("SELECT * FROM GCG_6839_SALES_TAX WHERE CUSTOMER = '{0}'", V.Local.sCustomer.Trim, V.Local.sSQL)
+	F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSQL, V.Local.sRet)
+	'check to see if anything was returned. If it was, update. If it wasn't insert it
+	F.Intrinsic.Control.If(V.Local.sRet.Trim,<>,"")
+		F.Intrinsic.String.Build("UPDATE GCG_6839_SALES_TAX SET EMAIL_ADDRESS = '{0}' WHERE CUSTOMER = '{1}'", V.Local.sEmailAddress.Trim, V.Local.sCustomer.Trim, V.Local.sSQL)
+		F.ODBC.Connection!con.Execute(V.Local.sSQL)
+	F.Intrinsic.Control.Else
+		v.Local.sNameCustomer.Set(V.DataTable.dtSalesTax(V.Args.RowIndex).NAME_CUSTOMER!FieldValTrim)
+		V.Local.sTaxExempNo.Set(V.DataTable.dtSalesTax(V.Args.RowIndex).TAX_EXMP_NO!FieldValTrim)
+		V.Local.sTaxState.Set(V.DataTable.dtSalesTax(V.Args.RowIndex).TAX_STATE!FieldValTrim)
+		'get the expiration date
+		V.Local.dExpDate.Set(V.DataTable.dtSalesTax(V.Args.RowIndex).EXP_DATE!FieldVal)
+		'format the expiration date
+		F.Intrinsic.String.Format(V.Local.dExpDate, "YYYY-MM-DD", V.Local.sExpDate)
+		V.Local.dDateSent.Set(V.DataTable.dtSalesTax(V.Args.RowIndex).DATE_LST_SENT!FieldVal)
+		F.Intrinsic.String.Format(V.Local.dDateSent, "YYYY-MM-DD", V.Local.sDateSent)
+		V.Local.dDateRec.Set(V.DataTable.dtSalesTax(V.Args.RowIndex).DATE_LST_REC!FieldVal)
+		F.Intrinsic.String.Format(V.Local.dDateRec, "YYYY-MM-DD", V.Local.sDateRec)
+		V.Local.bPrintFlag.Set(V.DataTable.dtSalesTax(V.Args.RowIndex).PRINT_FLAG!FieldVal)
+		F.Intrinsic.String.Build("INSERT INTO GCG_6839 (CUSTOMER, NAME_CUSTOMER, TAX_EXMP_NO, TAX_STATE, EXP_DATE, DATE_LST_SENT, DATE_LST_REC, EMAIL_ADDRESS, PRINT_FLAG) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}')", V.Local.sCustomer.Trim, V.Local.sNameCustomer.Trim, V.Local.sTaxExempNo.Trim, V.Local.sTaxState.Trim, V.Local.sExpDate.PervasiveDate, V.Local.sDateSent.PervasiveDate, V.Local.sDateRec.PervasiveDate, V.Local.sEmailAddress.Trim, V.Local.bPrintFlag, V.Local.sSQL)
+		F.ODBC.Connection!con.Execute(V.Local.sSQL)
+	F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.UnBlockEvents
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(ErrorMessage, "ErrorNumber", V.Ambient.ErrorNumber, "ErrorDescription", V.Ambient.ErrorDescription, "Subroutine", V.Ambient.CurrentSubroutine, "UNATTENDED", V.Global.bUnattended, "Project", "6839", "ProjectTitle", "Sales Tax Exempt Tracker", "Callback", "F_Main_UnLoad")
+F.Intrinsic.Control.EndTry
+Program.Sub.GsGcData_CellValueChanged.End
+
+Program.Sub.cmdPrint_Click.Start
+F.Intrinsic.Control.Try
+V.Local.iReportID.Declare(Long)
+V.Local.iRunID.Declare(Long)
+V.Local.iLogID.Declare(Long)
+V.Local.bDirExists.Declare(Boolean)
+V.Local.iCnt.Declare(Long)
+V.Local.sCustomer.Declare(String)
+V.Local.sFilePath.Declare(String)
+V.Local.sFileName.Declare(String)
+V.Local.sParam.Declare(String)
+V.Local.sParamVal.Declare(String)
+V.Local.iRet.Declare(Long)
+
+'check to see that the custom file directory exists
+F.Intrinsic.String.Build("{0}\CUSTOM\GCG_6839\", V.Caller.BusintDir, V.Local.sFilePath)
+F.Intrinsic.File.DirExists(V.Local.sFilePath, V.Local.bDirExists)
+F.Intrinsic.Control.If(V.Local.bDirExists,=,False)
+	F.Intrinsic.File.CreateDir(V.Local.sFilePath)
+F.Intrinsic.Control.EndIf
+
+'loop through the dashboard and see which rows are selected
+F.Intrinsic.Control.For(V.Local.iCnt, 0, V.DataTable.dtSalesTax.RowCount--,1)
+	
+	F.Intrinsic.Control.If(V.DataTable.dtSalesTax(V.Local.iCnt).SEL!FieldVal,=,True)
+		F.Intrinsic.UI.InvokeWaitDialog("Printing forms....", "Please Wait")
+		V.Local.sCustomer.Set(V.DataTable.dtSalesTax(V.Local.iCnt).CUSTOMER!FieldValTrim)
+		F.Intrinsic.Control.If(V.DataTable.dtSalesTax(V.Local.iCnt).TAX_STATE!FieldValTrim,=,"CT")
+			'save the report for CT as PDF and rename it to be Customer_CT_SalesTax_Exemp.PDF
+			F.Global.BI.GetIDFromName("GCG_6839_CT_SALESTAX_EXEMP.rpt", V.Local.iReportID)
+			'build the file name
+			F.Intrinsic.String.Build("{0}\CUSTOM\GCG_6839\{1}_CT_SALESTAX_EXEMP.PDF", V.Caller.BusintDir, V.Local.sCustomer.Trim, V.Local.sFileName)
+			'Save the corresponding state tax exemption report to PDF
+			V.Local.sParam.Set("CUSTOMER")
+			V.Local.sParamVal.Set(V.Local.sCustomer.Trim)
+			F.Global.BI.GetRunID(V.Local.iRunID)
+			F.Global.BI.StartLogging(V.Local.iRunID, V.Local.iReportID, 0, "GCG_6839_CT_SALESTAX_EXEMP.rpt", V.Local.iLogID)
+			F.Global.BI.RunReportPreProcessor(V.Local.iRunID, V.Local.iLogID, V.Local.sParam, V.Local.sParamVal, "", 8, True, "", -1, "",-1, "", "", V.Local.iRet)
+			F.Global.BI.StopLogging(V.Local.iLogID)
+		F.Intrinsic.Control.ElseIf(V.DataTable.dtSalesTax(V.Local.iCnt).TAX_STATE!FieldValTrim,=,"RI")
+			'save the report for CT as PDF and rename it to be Customer_RI_SalesTax_Exemp.PDF
+			F.Global.BI.GetIDFromName("GCG_6839_RI_SALESTAX_EXEMP.rpt", V.Local.iReportID)
+			'build the file name
+			F.Intrinsic.String.Build("{0}\CUSTOM\GCG_6839\{1}_RI_SALESTAX_EXEMP.PDF", V.Caller.BusintDir, V.Local.sCustomer.Trim, V.Local.sFileName)
+			'Save the corresponding state tax exemption report to PDF
+			V.Local.sParam.Set("CUSTOMER")
+			V.Local.sParamVal.Set(V.Local.sCustomer.Trim)
+			F.Global.BI.GetRunID(V.Local.iRunID)
+			F.Global.BI.StartLogging(V.Local.iRunID, V.Local.iReportID, 0, "GCG_6839_RI_SALESTAX_EXEMP.rpt", V.Local.iLogID)
+			F.Global.BI.RunReportPreProcessor(V.Local.iRunID, V.Local.iLogID, V.Local.sParam, V.Local.sParamVal, "", 8, True, "", -1, "",-1, "", "", V.Local.iRet)
+			F.Global.BI.StopLogging(V.Local.iLogID)
+		F.Intrinsic.Control.EndIf
+		F.Intrinsic.UI.CloseWaitDialog
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Next(V.Local.iCnt)
+
+F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(ErrorMessage, "ErrorNumber", V.Ambient.ErrorNumber, "ErrorDescription", V.Ambient.ErrorDescription, "Subroutine", V.Ambient.CurrentSubroutine, "UNATTENDED", V.Global.bUnattended, "Project", "6839", "ProjectTitle", "Sales Tax Exempt Tracker", "Callback", "F_Main_UnLoad")
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdPrint_Click.End
+
+Program.Sub.cmdEmail_Click.Start
+F.Intrinsic.Control.Try
+V.Local.iUser.Declare(Long)
+V.Local.bDirExists.Declare(Boolean)
+V.Local.dExpDate.Declare(Date)
+V.Local.iCnt.Declare(Long)
+V.Local.sCustomer.Declare(String)
+V.Local.sFilePath.Declare(String)
+V.Local.iReportID.Declare(Long)
+V.Local.sFileName.Declare(String)
+V.Local.sParam.Declare(String)
+V.Local.sParam.Redim(0,1)
+V.Local.sParamVal.Declare(String)
+V.Local.sParamVal.Redim(0,1)
+V.Local.sEmailAddress.Declare(String)
+V.Local.sSubject.Declare(String)
+V.Local.sBody.Declare(String)
+V.Local.sEmail.Declare(String)
+V.Local.sSenderEmail.Declare(String)
+V.Local.sExpDate.Declare(String)
+V.Local.sAttachmentPath.Declare(String)
+
+'check to see that the custom file directory exists
+F.Intrinsic.String.Build("{0}\CUSTOM\GCG_6839\", V.Caller.BusintDir, V.Local.sFilePath)
+F.Intrinsic.File.DirExists(V.Local.sFilePath, V.Local.bDirExists)
+F.Intrinsic.Control.If(V.Local.bDirExists,=,False)
+	F.Intrinsic.File.CreateDir(V.Local.sFilePath)
+F.Intrinsic.Control.EndIf
+
+'loop through the dashboard and see which rows are selected
+F.Intrinsic.Control.For(V.Local.iCnt, 0, V.DataTable.dtSalesTax.RowCount--,1)
+	F.Intrinsic.Control.If(V.DataTable.dtSalesTax(V.Local.iCnt).SEL!FieldVal,=,True)
+		F.Intrinsic.UI.InvokeWaitDialog("Emailing forms....", "Please Wait")
+		V.Local.sCustomer.Set(V.DataTable.dtSalesTax(V.Local.iCnt).CUSTOMER!FieldValTrim)
+		F.Intrinsic.Control.If(V.DataTable.dtSalesTax(V.Local.iCnt).EMAIL_ADDRESS!FieldValTrim,<>,"")
+			'get the email addresses entered for the selected customer
+			V.Local.sEmail.Set(V.DataTable.dtSalesTax(V.Local.iCnt).EMAIL_ADDRESS!FieldValTrim)
+			F.Intrinsic.String.Replace(V.Local.sEmail, ";", "@!@", V.Local.sEmail)
+			
+			F.Intrinsic.Control.If(V.DataTable.dtSalesTax(V.Local.iCnt).TAX_STATE!FieldValTrim,=,"CT")
+				'save the report for CT as PDF and rename it to be Customer_CT_SalesTax_Exemp.PDF
+				F.Global.BI.GetIDFromName("GCG_6839_CT_SALESTAX_EXEMP.rpt", V.Local.iReportID)
+				'build the file name
+				F.Intrinsic.String.Build("{0}\CUSTOM\GCG_6839\{1}_CT_SALESTAX_EXEMP.PDF", V.Caller.BusintDir, V.Local.sCustomer.Trim, V.Local.sFileName)
+				'Save the corresponding state tax exemption report to PDF
+				V.Local.sParam(0).Set("CUSTOMER")
+				V.Local.sParamVal(0).Set(V.Local.sCustomer.Trim)
+				F.Global.BI.SaveReport(V.Local.iReportID, 1, V.Local.sParam, V.Local.sParamVal, V.Local.sFileName)
+				F.Intrinsic.String.Build("{0}_CT_SALESTAX_EXEMP.PDF*!*{1}", V.Local.sCustomer.Trim, V.Local.sFilePath.Trim, V.Local.sAttachmentPath)
+			F.Intrinsic.Control.ElseIf(V.DataTable.dtSalesTax(V.Local.iCnt).TAX_STATE!FieldValTrim,=,"RI")
+				'save the report for CT as PDF and rename it to be Customer_RI_SalesTax_Exemp.PDF
+				F.Global.BI.GetIDFromName("GCG_6839_RI_SALESTAX_EXEMP.rpt", V.Local.iReportID)
+				'build the file name
+				F.Intrinsic.String.Build("{0}\CUSTOM\GCG_6839\{1}_RI_SALESTAX_EXEMP.PDF", V.Caller.BusintDir, V.Local.sCustomer.Trim, V.Local.sFileName)
+				'Save the corresponding state tax exemption report to PDF
+				V.Local.sParam(0).Set("CUSTOMER")
+				V.Local.sParamVal(0).Set(V.Local.sCustomer.Trim)
+				F.Global.BI.SaveReport(V.Local.iReportID, 1, V.Local.sParam, V.Local.sParamVal, V.Local.sFileName)
+				F.Intrinsic.String.Build("{0}_RI_SALESTAX_EXEMP.PDF*!*{1}", V.Local.sCustomer.Trim, V.Local.sFilePath.Trim, V.Local.sAttachmentPath)
+			F.Intrinsic.Control.EndIf
+			
+			'set the subject
+			V.Local.sSubject.Set("Sales Tax Exemption Due To Expire Soon")
+			'get the sender email from the user that is sending the email from the dashboard
+			F.Global.Security.GetUserEmail(V.Caller.User, V.Caller.CompanyCode, V.Local.sSenderEmail)
+			
+			'Build the body of the email
+			V.Local.dExpDate.set(V.DataTable.dtSalesTax(V.Local.iCnt).EXP_DATE!FieldVal)
+			F.Intrinsic.String.Format(V.Local.dExpDate, "YYYY-MM-DD", V.Local.sExpDate)
+			F.Intrinsic.String.Build("Your Sales Tax Exemption will expire on {0}. Please complete the attached form and email, or mail, it to us before the expiration date.", V.Local.sExpDate, V.Local.sBody)
+			
+			F.Global.Security.GetUserId(V.Caller.User, V.Caller.CompanyCode, V.Local.iUser)
+	
+			F.Global.Messaging.QueueMessage(V.Caller.CompanyCode, V.Local.iUser, V.Caller.Caller, V.Local.sSubject.Trim,V.Local.sSenderEmail, V.Local.sEmail.Trim, V.Local.sBody.Trim, 5, "credit@cbsteel.com", False, "", "", "", "", "", "", "",V.Local.sAttachmentPath,False)
+			'set the date last sent to today's date
+			F.Data.DataTable.SetValue("dtSalesTax", V.Local.iCnt, "DATE_LST_SENT", V.Ambient.Date.PervasiveDate)
+			
+		F.Intrinsic.Control.Else
+			F.Intrinsic.UI.CloseWaitDialog
+			F.Intrinsic.UI.Msgbox("You must enter at least one Email Address before you can send an Email for this Customer. Please try again.", "Missing Information")
+		F.Intrinsic.Control.EndIf
+		F.Intrinsic.UI.CloseWaitDialog
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Next(V.Local.iCnt)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(ErrorMessage, "ErrorNumber", V.Ambient.ErrorNumber, "ErrorDescription", V.Ambient.ErrorDescription, "Subroutine", V.Ambient.CurrentSubroutine, "UNATTENDED", V.Global.bUnattended, "Project", "6839", "ProjectTitle", "Sales Tax Exempt Tracker", "Callback", "F_Main_UnLoad")
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdEmail_Click.End
+
+Program.Sub.f_Main_UnLoad.Start
+F.Intrinsic.Control.Try
+
+F.Intrinsic.Control.If(V.Global.bLoadData,=,True)
+	'callsub to save the data to the custom table
+	F.Intrinsic.UI.InvokeWaitDialog("Saving Data...", "Please Wait")
+	F.Intrinsic.Control.CallSub(SaveData)
+	F.Intrinsic.UI.CloseWaitDialog
+	'callsub to serialize the grid
+	F.Intrinsic.Control.CallSub(Serialize)
+F.Intrinsic.Control.EndIf
+
+'close the connection
+F.ODBC.Connection!con.Close
+
+'end the program
+F.Intrinsic.Control.End
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(ErrorMessage, "ErrorNumber", V.Ambient.ErrorNumber, "ErrorDescription", V.Ambient.ErrorDescription, "Subroutine", V.Ambient.CurrentSubroutine, "UNATTENDED", V.Global.bUnattended, "Project", "6839", "ProjectTitle", "Sales Tax Exempt Tracker", "Callback", "F_Main_UnLoad")
+F.Intrinsic.Control.EndTry
+Program.Sub.f_Main_UnLoad.End
+
+Program.Sub.SaveData.Start
+F.Intrinsic.Control.Try
+V.Local.sSQL.Declare(String)
+V.Local.sRet.Declare(String)
+
+'query custom table to see if any records exist
+F.ODBC.Connection!con.ExecuteAndReturn("SELECT * FROM GCG_6839_SALES_TAX", V.Local.sRet)
+F.Intrinsic.Control.If(V.Local.sRet.Trim,<>,"")
+	'if records exist, delete them 
+	F.ODBC.Connection!con.Execute("DELETE FROM GCG_6839_SALES_TAX")
+F.Intrinsic.Control.EndIf
+
+'save records from the datatable to the custom table
+F.Data.DataTable.SaveToDB("dtSalesTax", "con", "GCG_6839_SALES_TAX", "CUSTOMER", 128, "NAME_CUSTOMER@!@NAME_CUSTOMER*!*CUSTOMER@!@CUSTOMER*!*TAX_EXMP_NO@!@TAX_EXMP_NO*!*TAX_STATE@!@TAX_STATE*!*EXP_DATE@!@EXP_DATE*!*DATE_LST_SENT@!@DATE_LST_SENT*!*DATE_LST_REC@!@DATE_LST_REC*!*EMAIL_ADDRESS@!@EMAIL_ADDRESS*!*PRINT_FLAG@!@PRINT_FLAG")
+
+F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(ErrorMessage, "ErrorNumber", V.Ambient.ErrorNumber, "ErrorDescription", V.Ambient.ErrorDescription, "Subroutine", V.Ambient.CurrentSubroutine, "UNATTENDED", V.Global.bUnattended, "Project", "6839", "ProjectTitle", "Sales Tax Exempt Tracker", "Callback", "F_Main_UnLoad")
+F.Intrinsic.Control.EndTry
+Program.Sub.SaveData.End
+
+Program.Sub.Deserialize.Start
+F.Intrinsic.Control.Try
+V.Local.sSerialize.Declare(String)
+
+F.Global.Registry.ReadValue(V.Caller.User,V.Caller.CompanyCode,"gvSalesTax",6839,0,5,"",V.Local.sSerialize)
+F.Intrinsic.Control.If(V.Local.sSerialize,<>,"")
+	F.ODBC.Connection!common.OpenConnection(V.Ambient.Ccon,V.Ambient.Cuser,V.Ambient.Cpass)
+	F.ODBC.Connection!common.Execute("Delete From Gs_Registry Where Reg_ID = 6839 And Seq < 4000;")
+	F.ODBC.Connection!common.Close
+F.Intrinsic.Control.EndIf
+
+F.Global.Registry.ReadValue(V.Caller.User,V.Caller.CompanyCode, "gvSalesTax",6839,1000,6,"",V.Local.sSerialize)
+F.Intrinsic.Control.If(V.Local.sSerialize.Trim,<>,"")
+	Gui.f_Main.GsGcData.Deserialize(V.Local.sSerialize)
+F.Intrinsic.Control.EndIf
+
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(ErrorMessage, "ErrorNumber", V.Ambient.ErrorNumber, "ErrorDescription", V.Ambient.ErrorDescription, "Subroutine", V.Ambient.CurrentSubroutine, "UNATTENDED", V.Global.bUnattended, "Project", "6839", "ProjectTitle", "Sales Tax Exempt Tracker", "Callback", "F_Main_UnLoad")
+F.Intrinsic.Control.EndTry
+Program.Sub.Deserialize.End
+
+Program.Sub.Serialize.Start
+F.Intrinsic.Control.Try
+V.Local.sSerialize.Declare(String)
+
+Gui.f_Main.GsGcData.Serialize("gvSalesTax", V.Local.sSerialize)
+F.Global.Registry.AddValue(V.Caller.User,V.Caller.CompanyCode,"gvSalesTax",6839,1000,False,"Serialize",False,0,-999.0,1/1/1980,12:00:00 AM,V.Local.sSerialize)
+
+'save the email attempts to registry
+'Email Attempt 1
+
+
+'Email Attempt 2
+
+'Email Attempt 3
+
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(ErrorMessage, "ErrorNumber", V.Ambient.ErrorNumber, "ErrorDescription", V.Ambient.ErrorDescription, "Subroutine", V.Ambient.CurrentSubroutine, "UNATTENDED", V.Global.bUnattended, "Project", "6839", "ProjectTitle", "Sales Tax Exempt Tracker", "Callback", "F_Main_UnLoad")
+F.Intrinsic.Control.EndTry
+Program.Sub.Serialize.End
+
+Program.Sub.ErrorMessage.Start
+'basic error message for replacing catch block
+'this is really just for when printing the message and ending program
+'pass error number, error description, current subroutine
+'optional callback sub, this will be called before ending
+'optional unattended parameters, those subs may not exist if not using them but won't be called
+F.Intrinsic.Control.Try
+
+V.Local.iError.Declare(Long)
+V.Local.sErrorDescription.Declare(String)
+V.Local.sSubroutine.Declare(String)
+V.Local.sError.Declare(String)
+V.Local.bExists.Declare(Boolean)
+V.Local.sCallback.Declare(String)
+
+V.Local.iError.Set(V.Args.ErrorNumber)
+V.Local.sErrorDescription.Set(V.Args.ErrorDescription)
+V.Local.sSubroutine.Set(V.Args.Subroutine)
+
+'make sure we aren't in an error loop
+F.Intrinsic.Control.If(V.Global.bError)
+	F.Intrinsic.Control.End
+
+F.Intrinsic.Control.EndIf
+V.Global.bError.Set(True)
+
+F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}", V.Caller.ScriptFile, V.Ambient.Newline, V.Local.sSubroutine, V.Local.iError, V.Local.sErrorDescription, V.Ambient.GABVersion, V.Local.sError)
+
+F.Intrinsic.Variable.ArgExists("UNATTENDED", V.Local.bExists)
+F.Intrinsic.Control.If(V.Local.bExists)
+	F.Intrinsic.Control.If(V.Args.UNATTENDED)
+		F.Intrinsic.Control.CallSub(UnattendedErrorMessage, "MESSAGE", V.Local.sError, "PROJECT", V.Args.PROJECT, "PROJECTTITLE", V.Args.PROJECTTITLE)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Else
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Variable.ArgExists("Callback", V.Local.bExists)
+F.Intrinsic.Control.If(V.Local.bExists)
+	V.Local.sCallback.Set(V.Args.Callback.Trim)
+	F.Intrinsic.Control.CallSub(V.Local.sCallback)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.End
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Caller.ScriptFile,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+
+F.Intrinsic.Control.EndTry
+Program.Sub.ErrorMessage.End
+
+Program.Sub.Comments.Start
+${$5$}$20.1.8245.18323$}$1
+${$6$}$acollins$}$20220808153756247$}$h98hERc2yV72q0GaUGlwSaoK/aefTdVk/XotSp2jZHiTOPO1L9vT2BExtK2yqP8csEtUF0L59MOLm80yyoh/6A==
+Program.Sub.Comments.End
